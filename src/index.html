@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#">
+        <div class="datos-generales">
+            <label for="">Nombre</label><input type="text" placeholder="name" id="nameInput">
+            <label for="">Color</label><input type="text" placeholder="color" id="colorInput">
+            <label for="">Edad</label><input type="number" placeholder="anios" id="edadInput">
+            
+        </div>
+        <div class="datos-especificos">
+            <span>Tipo Animal</span>
+            <div class="input-radio">
+                <label for="">Perro</label><input type="radio" name="tipoAnimal" id="" value="perro">
+            </div>
+            <div class="input-radio">
+                <label for="">Gato</label><input type="radio" name="tipoAnimal" id="" value="gato">
+            </div>
+            <div class="input-radio">
+                <label for="">Oveja</label><input type="radio" name="tipoAnimal" id="" value="oveja">  
+            </div>
+            <button id="checkRadio" type="submit">ELEGIR ANIMAL</button>
+            <label for="" id="animalElegido"></label>
+            <div class="extraInput inactive" id="extraInputPerro">
+                <label for="">Raza</label><input type="text" id="raza">
+            </div>
+            <div class="extraInput inactive" id="extraInputGato">
+                <label for="">cm_Garras</label><input type="number" name="" id="garrasCm">
+            </div>
+            <div class="extraInput inactive" id="extraInputOveja">
+                <label for="">Esquilada? 1=Si | 0=No</label><input type="text" id="esquilada">
+            </div>
+        </div>
+        <button type="submit" id="buttonSubmit">CARGAR</button>
+    </form>
+    <div id="mostrarMascotas">
+        <label for="">Mis Mascotas</label>
+        <div id="mascotas">
+
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
