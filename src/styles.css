@@ -15,6 +15,23 @@ input{
     border: 3px solid blueviolet;
     border-radius: 5px;
 }
+#register{
+    margin: 16px 0px 0px 16px;
+}
+#register .inputDiv{
+    display: flex;
+    margin-bottom: 8px;
+}
+
+#register .inputDiv label{
+    width: 120px;
+    font-size: 26px;
+}
+#register #registerBtn{
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+}
 
 .datos-generales{margin: 16px;}
 
@@ -26,6 +43,7 @@ input{
     width: 300px;
     height: 40px;
     font-size: 24px;
+    margin-right: 12px;
 }
 
 .datos-especificos{margin: 24px 0px 24px 16px;}
@@ -82,9 +100,11 @@ input{
 
 #buttonSubmit{
     margin-left: 50%;
+    margin-right: 50%;
     font-weight: 700;
     padding: 16px;
     border-radius: 5px;
+    width: 200px;
 }
 
 #mostrarMascotas{
