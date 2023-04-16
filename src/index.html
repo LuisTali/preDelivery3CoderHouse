@@ -38,14 +38,35 @@
                 <label for="">Esquilada? 1=Si | 0=No</label><input type="text" id="esquilada">
             </div>
         </div>
+        
         <button type="submit" id="buttonSubmit">CARGAR</button>
+        <hr style="height: 2px; width: 90%; margin-top: 16px; margin-left: 5%;">
     </form>
+    <div id="filtradoContainer">
+        <div id="filtradoNombrePanel">
+            <label for="">Filtre por Nombre</label><input type="text" placeholder="nombre" id="buscarNombreInput">
+            <button id="buscarNombre">Buscar</button>
+        </div>
+        <div id="filtradoTipoPanel">
+            <label for="">Filtre por Tipo de Animal</label>
+            <select name="" id="filtrado" value="0">
+                <option value="" disabled selected>Seleccione una opcion</option>
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="oveja">Oveja</option>
+            </select>
+            <button id="quitarfiltro">Quitar Filtro</button>
+        </div>
+    </div>
     <div id="mostrarMascotas">
         <label for="">Mis Mascotas</label>
         <div id="mascotas">
 
         </div>
     </div>
+    
+
+    
     <script type="module" src="script.js"></script>
 </body>
 </html>

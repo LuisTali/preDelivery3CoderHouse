@@ -7,6 +7,6 @@ export default class Oveja extends Animal{
     }
 
     presentacion (){
-        return `${super.presentacion()} y actualmente me encuentro ${(this.despelada > 0) ? 'pelada' : 'peluca'}`;
+        return `${super.presentacion()} y actualmente me encuentro ${(this.despelada > 0) ? 'pelada' : 'con mucha lana'}`;
     }
 }

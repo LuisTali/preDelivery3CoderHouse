@@ -14,6 +14,12 @@ const inputExtraO = document.getElementById(`extraInputOveja`);
 const labelAnimalElegido = document.getElementById('animalElegido');
 let statusTipoElegido = 0;
 
+
+const selectFiltrado = document.getElementById("filtrado"); //Para el filtrado por tipo de animal
+const quitarFiltroBtn = document.getElementById("quitarfiltro");
+
+const buscarNombreBtn = document.getElementById("buscarNombre");
+
 const inactiveExtraInputs = ()=>{
     (!inputExtraP.classList.contains('inactive') ? inputExtraP.classList.add('inactive') : null);
     (!inputExtraG.classList.contains('inactive') ? inputExtraG.classList.add('inactive') : null);
@@ -127,64 +133,79 @@ const cargarMascota = (e) =>{
 
 submitBtn.onclick = ((e) => cargarMascota(e));
 
-const mostrarAnimales = () =>{
+
+const mostrarAnimal = (mascota)=>{
     let mascotasHtml = document.getElementById('mascotas');
     mascotasHtml.innerHTML = "";
-    mascotas.forEach(mascota => {
+    if(mascota!=undefined){
         let parrafo = document.createElement('p');
-        parrafo.innerHTML = mascota.presentacion();
-        mascotasHtml.appendChild(parrafo);
-    });
+            parrafo.innerHTML = mascota.presentacion();
+            mascotasHtml.appendChild(parrafo);
+    }else{
+        let parrafo = document.createElement('p');
+            parrafo.innerHTML = 'No hay animales con ese nombre';
+            mascotasHtml.appendChild(parrafo);
+    }
+}
+// Mostrar Animal buscado y Mostrar Animales o Animales filtrados
+const mostrarAnimales = (filtrado = "") =>{
+    let mascotasHtml = document.getElementById('mascotas');
+    mascotasHtml.innerHTML = "";
+    if(filtrado==null){
+        let parrafo = document.createElement('p');
+        parrafo.innerHTML = 'No tiene mascotas de este tipo';
+        mascotasHtml.appendChild(parrafo); 
+    }else if(filtrado != ""){
+        filtrado.forEach(mascota => {
+            let parrafo = document.createElement('p');
+            parrafo.innerHTML = mascota.presentacion();
+            mascotasHtml.appendChild(parrafo);
+        })
+    }else{
+        mascotas.forEach(mascota => {
+            let parrafo = document.createElement('p');
+            parrafo.innerHTML = mascota.presentacion();
+            mascotasHtml.appendChild(parrafo);
+        });
+    }
 }
 
 const filtrarPorTipo = (tipoMascota) => {
-    
     let filtrado = mascotas.filter(animal => animal.tipoMascota === tipoMascota);
-
+    
+    //Si filtrado esta vacio le asigno null para su posterior comparacion en mostrarAnimales()
     if(filtrado == ""){
-        alert('Filtrado vacio, elija G(gato), P(perro) o E(elefante) si es que tiene una de esas mascotas');
+        filtrado = null;
     }
     return filtrado;
 }
 
+//Al cambiar el select, recibe el valor y filtra el array mascotas para su posterior visualizacion
+selectFiltrado.onchange = ()=>{
+    let optionSelected = selectFiltrado.options[selectFiltrado.selectedIndex].value;
+    let arrayFiltrado = filtrarPorTipo(optionSelected);
+    mostrarAnimales(arrayFiltrado);
+}
+
+//Restablece el select y muestra todos los animales al quitar el filtro
+quitarFiltroBtn.onclick = ()=>{
+    mostrarAnimales();
+    selectFiltrado.selectedIndex = 0;
+}
+
+//Busca animal por nombre, obteniendo el nombre desde el input y buscandolo con el metodo findPorNombre
+buscarNombreBtn.onclick = ()=>{
+    let inputNombre = document.getElementById("buscarNombreInput");
+    let nombre = inputNombre.value;
+    inputNombre.value = "";
+    let mascotaBuscar = findPorNombre(nombre);
+    mostrarAnimal(mascotaBuscar);
+}
+
+//Recibe un nombre como parametro y busca el animal con ese nombre
 const findPorNombre = (nombre) =>{
     console.log(`Nombre a buscas: ${nombre}`);
-    
     let mascota = mascotas.find(animal => animal.nombre === nombre);
-
     return mascota;
 }
 
-const presentacionArreglo = (arreglo) =>{
-    arreglo.forEach(mascota => {
-        alert(mascota.presentacion());
-    });
-} 
-
-/*let opcion = prompt('Ingrese funcion a realizar \n -F filtrarPorTipo \n -N filtrarPorNombre').toUpperCase();
-do{
-    switch(opcion){
-        case 'F':{
-            console.log('Eligio F');
-
-            let filtrados = filtrarPorTipo((prompt('Ingrese letra de tipo mascota para filtrar ').charAt(0).toUpperCase()));
-
-            presentacionArreglo(filtrados);
-            break;
-        }
-        case 'N':{
-            console.log('Eligio N');
-            console.log('Animal buscado');
-            let animalBuscado = (findPorNombre(prompt('Ingrese nombre del animal a buscar')));
-
-            if(animalBuscado != undefined){
-                alert(animalBuscado.presentacion());
-            }else{
-                alert('Animal con ese nombre no existe')
-            }
-            break;
-        }
-            
-    }
-    opcion = prompt('Ingrese funcion a realizar \n -F filtrarPorTipo \n -N filtrarPorNombre \n -ESC salir').toUpperCase();
-}while(opcion.toUpperCase() != 'ESC')*/
