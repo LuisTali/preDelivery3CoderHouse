@@ -92,36 +92,42 @@ loginBtn.onclick = ()=>{
 loginSubmitButton.onclick = ()=>{
     let username = loginUserInput.value;
     let email = loginEmailInput.value;
+    const alertMsg = document.getElementById("alert");
     if(username != "" && email != ""){
         console.log(username, email);
         let userValidation = JSON.parse(localStorage.getItem("user"));
-        if(username == userValidation.username && email == userValidation.email){
-            usuarioLogueado = username;
-            
-            mainContainer.classList.remove("inactive");
-            loginDiv.classList.toggle("inactive");
-
-            mascotas = []; //Para que si el usuario loguea dos veces, no se duplique el arreglo
-
-            document.getElementById("alert").innerHTML = `Bienvenido de nuevo ${username}!`
-            let mascotasParseadas = (JSON.parse(localStorage.getItem("mascotas"))).mascotas;
-            console.log(mascotasParseadas);
-            mascotasParseadas.forEach(mascota =>{
-                if(mascota.tipoMascota == "perro"){
-                    let perro = crearPerro(mascota.nombre,mascota.edad,mascota.color,mascota.tipoMascota,mascota.raza);
-                    mascotas.push(perro);
-                }else if(mascota.tipoMascota == "gato"){
-                    let gato = new Gato(mascota.nombre,mascota.edad,mascota.color,mascota.tipoMascota,mascota.largoGarras);
-                    mascotas.push(gato);
-                }else{
-                    let oveja = new Oveja(mascota.nombre,mascota.edad,mascota.color,mascota.tipoMascota,mascota.despelada);
-                    mascotas.push(oveja);
-                }
-            })
-            mostrarAnimales();
+        console.log(userValidation);
+        if(userValidation != null && userValidation!=undefined && userValidation!=""){
+            if(username == userValidation.username && email == userValidation.email){
+                usuarioLogueado = username;
+                
+                mainContainer.classList.remove("inactive");
+                loginDiv.classList.toggle("inactive");
+    
+                mascotas = []; //Para que si el usuario loguea dos veces, no se duplique el arreglo
+    
+                alertMsg.innerHTML = `Bienvenido de nuevo ${username}!`
+                let mascotasParseadas = (JSON.parse(localStorage.getItem("mascotas"))).mascotas;
+                console.log(mascotasParseadas);
+                mascotasParseadas.forEach(mascota =>{
+                    if(mascota.tipoMascota == "perro"){
+                        let perro = crearPerro(mascota.nombre,mascota.edad,mascota.color,mascota.tipoMascota,mascota.raza);
+                        mascotas.push(perro);
+                    }else if(mascota.tipoMascota == "gato"){
+                        let gato = new Gato(mascota.nombre,mascota.edad,mascota.color,mascota.tipoMascota,mascota.largoGarras);
+                        mascotas.push(gato);
+                    }else{
+                        let oveja = new Oveja(mascota.nombre,mascota.edad,mascota.color,mascota.tipoMascota,mascota.despelada);
+                        mascotas.push(oveja);
+                    }
+                })
+                mostrarAnimales();
+            }else{
+                alertMsg.innerHTML = "Compruebe si los datos ingresados son correctos, tenga en cuenta mayusculas";
+            }
         }else{
-            alert("Compruebe si los datos ingresados son correctos, tenga en cuenta mayusculas")
-        }
+            alertMsg.innerHTML = "No hay usuarios registrados en la base de datos, cree una cuenta antes"
+        }   
     }else{
         alert("Llene todos los campos")
     }
