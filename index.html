@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><button id="registerBtn">Register</button></li>
+            <li><button id="loginBtn">Login</button></li>
+        </ul>
+    </nav>  
+    <div class="formUser register inactive" id="register">
+        <h3>Register</h3>
+        <div class="inputDiv">
+            <label for="">Username</label><input type="text" name="" id="usernameInputRegister">
+        </div>
+        <div class="inputDiv">
+            <label for="">Email</label><input type="text" id="emailInputRegister">
+        </div>
+        <button id="registerSubmitBtn">Register</button>
+    </div>
+
+    <div class="formUser register inactive" id="login">
+        <h3>LogIn</h3>
+        <div class="inputDiv">
+            <label for="">Username</label><input type="text" name="" id="usernameInputLogin">
+        </div>
+        <div class="inputDiv">
+            <label for="">Email</label><input type="text" id="emailInputLogin">
+        </div>
+        <button id="loginSubmitBtn">Log In</button>
+    </div>
+
+    <span id="alert">Para continuar Inicie Sesion o Registrese</span>
+    <hr style="height: 2px; width: 90%; margin-top: 46px; margin-left: 5%;">
+    
+    <div id="maincontainer" class=" inactive">
+
+        <form action="#">
+            <div class="datos-generales">
+                <label for="">Nombre</label><input type="text" placeholder="name" id="nameInput">
+                <label for="">Color</label><input type="text" placeholder="color" id="colorInput">
+                <label for="">Edad</label><input type="number" placeholder="anios" id="edadInput">
+                
+            </div>
+            <div class="datos-especificos">
+                <span>Tipo Animal</span>
+                <div class="input-radio">
+                    <label for="">Perro</label><input type="radio" name="tipoAnimal" id="" value="perro">
+                </div>
+                <div class="input-radio">
+                    <label for="">Gato</label><input type="radio" name="tipoAnimal" id="" value="gato">
+                </div>
+                <div class="input-radio">
+                    <label for="">Oveja</label><input type="radio" name="tipoAnimal" id="" value="oveja">  
+                </div>
+                <button id="checkRadio" type="submit">Elegir Animal</button>
+
+                <label for="" id="animalElegido"></label>
+                
+                <div class="extraInput inactive" id="extraInputPerro">
+                    <label for="">Raza</label><input type="text" id="raza">
+                </div>
+                <div class="extraInput inactive" id="extraInputGato">
+                    <label for="">cm_Garras</label><input type="number" name="" id="garrasCm">
+                </div>
+                <div class="extraInput inactive" id="extraInputOveja">
+                    <label for="">Esquilada? 1=Si | 0=No</label><input type="text" id="esquilada">
+                </div>
+            </div>
+            
+            <button type="submit" id="buttonSubmit">Cargar</button>
+            <hr style="height: 2px; width: 90%; margin-top: 16px; margin-left: 5%;">
+        </form>
+        <div id="filtradoContainer">
+            <div id="filtradoNombrePanel">
+                <label for="">Filtre por Nombre</label><input type="text" placeholder="nombre" id="buscarNombreInput">
+                <button id="buscarNombre">Buscar</button>
+            </div>
+            <div id="filtradoTipoPanel">
+                <label for="">Filtre por Tipo de Animal</label>
+                <select name="" id="filtrado" value="0">
+                    <option value="" disabled selected>Seleccione una opcion</option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                    <option value="oveja">Oveja</option>
+                </select>
+                <button id="quitarfiltro">Quitar Filtro</button>
+            </div>
+        </div>
+        <div id="mostrarMascotas">
+            <label for="">Mis Mascotas</label>
+            <div id="mascotas">
+
+            </div>
+        </div>
+        
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

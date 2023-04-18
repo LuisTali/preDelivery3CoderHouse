@@ -72,6 +72,8 @@ registerSubmitButton.onclick = ()=>{
         localStorage.setItem("user",JSON.stringify({username:username,email:email}));
         registerUserInput.value = "";
         registerEmailInput.value = "";
+        loginDiv.classList.toggle("inactive");
+        registerDiv.classList.toggle("inactive");
         mascotas = [];
         localStorage.removeItem("mascotas");
         mostrarAnimales()

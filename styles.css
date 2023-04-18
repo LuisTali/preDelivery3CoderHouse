@@ -52,7 +52,10 @@ nav ul li button{
     border-radius: 5px;
 }
 
-
+#alert{
+    font-size: 24px;
+    margin:8px 0px 0px 16px
+}
 .datos-generales{margin: 16px;}
 
 .datos-generales label{font-size: 36px;}
@@ -132,6 +135,7 @@ nav ul li button{
     width: 100%;
     justify-content: center;
     font-family: system-ui;
+    padding-bottom: 24px;
 }
 
 #mostrarMascotas label{
