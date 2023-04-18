@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     color: whitesmoke;
+    list-style: none;
 }
 body{
     background-color: black;
@@ -9,29 +10,48 @@ body{
 button{
     background-color: rgb(41, 41, 41);
     border: 3px solid blueviolet;
+    border-radius: 5px;
 }
 input{
     background-color: rgb(41, 41, 41);
     border: 3px solid blueviolet;
     border-radius: 5px;
 }
-#register{
+
+nav{
+    width: 100%;
+    height: 80px;
+    top: 0;
+}
+nav ul{ margin: 16px 0px 0px 16px; }
+nav ul li{
+    float: left;
+    height: fit-content;
+    margin-right: 16px;
+}
+nav ul li button{
+    width: 100px;
+    height: 50px;
+}
+
+.register{
     margin: 16px 0px 0px 16px;
 }
-#register .inputDiv{
+.register .inputDiv{
     display: flex;
     margin-bottom: 8px;
 }
 
-#register .inputDiv label{
+.register .inputDiv label{
     width: 120px;
     font-size: 26px;
 }
-#register #registerBtn{
+.register button{
     width: 120px;
     height: 40px;
     border-radius: 5px;
 }
+
 
 .datos-generales{margin: 16px;}
 

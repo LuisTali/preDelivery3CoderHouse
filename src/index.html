@@ -8,16 +8,39 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="register">
+    <nav>
+        <ul>
+            <li><button id="registerBtn">Register</button></li>
+            <li><button id="loginBtn">Login</button></li>
+        </ul>
+    </nav>  
+    <div class="formUser register inactive" id="register">
+        <h3>Register</h3>
         <div class="inputDiv">
-            <label for="">Username</label><input type="text" name="" id="usernameInput">
+            <label for="">Username</label><input type="text" name="" id="usernameInputRegister">
         </div>
         <div class="inputDiv">
-            <label for="">Email</label><input type="text" id="emailInput">
+            <label for="">Email</label><input type="text" id="emailInputRegister">
         </div>
-        <button id="registerBtn">Register</button>
+        <button id="registerSubmitBtn">Register</button>
     </div>
-    <hr style="height: 2px; width: 90%; margin-top: 16px; margin-left: 5%;">
+
+    <div class="formUser register inactive" id="login">
+        <h3>LogIn</h3>
+        <div class="inputDiv">
+            <label for="">Username</label><input type="text" name="" id="usernameInputLogin">
+        </div>
+        <div class="inputDiv">
+            <label for="">Email</label><input type="text" id="emailInputLogin">
+        </div>
+        <button id="loginSubmitBtn">Log In</button>
+    </div>
+
+    <span id="alert"></span>
+    <hr style="height: 2px; width: 90%; margin-top: 46px; margin-left: 5%;">
+    
+    <div id="maincontainer" class=" inactive">
+
     <form action="#">
         <div class="datos-generales">
             <label for="">Nombre</label><input type="text" placeholder="name" id="nameInput">
@@ -37,7 +60,9 @@
                 <label for="">Oveja</label><input type="radio" name="tipoAnimal" id="" value="oveja">  
             </div>
             <button id="checkRadio" type="submit">Elegir Animal</button>
+
             <label for="" id="animalElegido"></label>
+            
             <div class="extraInput inactive" id="extraInputPerro">
                 <label for="">Raza</label><input type="text" id="raza">
             </div>
@@ -75,8 +100,8 @@
         </div>
     </div>
     
+    </div>
 
-    
     <script type="module" src="script.js"></script>
 </body>
 </html>
