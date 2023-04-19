@@ -37,6 +37,7 @@ const quitarFiltroBtn = document.getElementById("quitarfiltro"); //Boton para qu
 const buscarNombreBtn = document.getElementById("buscarNombre"); //Boton para buscar por nombre
 
 let usuarioLogueado = null; //Al loguearse, se guarda aqui el username
+const alertMsg = document.getElementById("alert"); //Alert para register, login y demas avisos
 
 const inactiveExtraInputs = ()=>{
     (!inputExtraP.classList.contains('inactive') ? inputExtraP.classList.add('inactive') : null);
@@ -62,6 +63,7 @@ registerBtn.onclick = ()=>{
     registerDiv.classList.remove("inactive");
     loginUserInput.value = "";
     loginEmailInput.value = "";
+    alertMsg.innerHTML = "";
 }
 
 registerSubmitButton.onclick = ()=>{
@@ -78,7 +80,7 @@ registerSubmitButton.onclick = ()=>{
         localStorage.removeItem("mascotas");
         mostrarAnimales()
     }else{
-        alert("Llene todos los campos")
+        alertMsg.innerHTML ="Llene todos los campos";
     }
 }
 
@@ -87,12 +89,12 @@ loginBtn.onclick = ()=>{
     loginDiv.classList.remove("inactive");
     registerUserInput.value = "";
     registerEmailInput.value = "";
+    alertMsg.innerHTML = "";
 }
 
 loginSubmitButton.onclick = ()=>{
     let username = loginUserInput.value;
     let email = loginEmailInput.value;
-    const alertMsg = document.getElementById("alert");
     if(username != "" && email != ""){
         console.log(username, email);
         let userValidation = JSON.parse(localStorage.getItem("user"));
@@ -129,7 +131,7 @@ loginSubmitButton.onclick = ()=>{
             alertMsg.innerHTML = "No hay usuarios registrados en la base de datos, cree una cuenta antes"
         }   
     }else{
-        alert("Llene todos los campos")
+        alertMsg.innerHTML = "Llene todos los campos";
     }
 }
 
